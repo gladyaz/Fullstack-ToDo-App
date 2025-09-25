@@ -1,175 +1,148 @@
-# Industrix Todo Application
 
-Full-stack Todo application built with React, Node.js, TypeScript, and PostgreSQL.
 
-## 🚀 Features
+# Industrix Todo App
 
-- ✅ Complete CRUD operations for todos
-- 📁 Category management system
-- 🎯 Priority levels (Low, Medium, High)
-- 📊 Real-time statistics dashboard
-- 🔍 Advanced search and filtering
-- 📱 Responsive design with Ant Design
-- 🔄 Real-time data synchronization
-- 🗄️ PostgreSQL database integration
+Ini project Todo app yang aku coba bikin pakai React, Node.js, TypeScript, sama PostgreSQL. Tujuannya buat belajar full-stack development, jadi kemungkinan masih ada kekurangan nya.
 
-## 🛠️ Tech Stack
+ Fitur yang udah ada
 
-### Backend
-- **Node.js** with **TypeScript**
-- **Express.js** framework
-- **Sequelize ORM** for database operations
-- **PostgreSQL** database
-- **CORS** enabled for cross-origin requests
-- **Validation** middleware for data integrity
+Bisa CRUD (tambah, lihat, edit, hapus) todo
+Ada sistem kategori buat ngelompokkin todo
+Bisa kasih priority (Low, Medium, High)
+Ada statistik sederhana (jumlah todo selesai/belum)
+Search & filter biar gampang nyari todo
+Responsive design (pakai Ant Design)
+Backend nyambung ke PostgreSQL database
 
-### Frontend
-- **React 18** with **TypeScript**
-- **Vite** for fast development and building
-- **Ant Design** for UI components
-- **Axios** for API communication
-- **CSS3** for custom styling
+ Tech Stack
 
-## 📦 Installation & Setup
+Backend
 
-### Prerequisites
-- Node.js (v16 or higher)
-- PostgreSQL database
-- npm or yarn package manager
+Node.js + TypeScript
+Express.js
+Sequelize ORM
+PostgreSQL
+Middleware validasi simple
 
-### Backend Setup
+Frontend
+React (Vite + TypeScript)
+Ant Design (komponen UI)
+Axios buat komunikasi ke API
 
-1. Navigate to backend directory:
-```bash
-cd backend
-```
+Cara Jalanin Project
+Syarat
 
-2. Install dependencies:
-```bash
-npm install
-```
+* Node.js 
+* PostgreSQL sudah terinstall
+* npm 
 
-3. Create `.env` file:
-```env
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=industrix_todo
-DB_USER=postgres
-DB_PASSWORD=your_password
-NODE_ENV=development
-PORT=3001
-```
+Backend
 
-4. Start the backend server:
-```bash
-npm run dev
-```
+1. Masuk ke folder backend:
 
-Backend will run on: http://localhost:3001
+   bash
+   cd backend
+   
+2. Install dependency:
 
-### Frontend Setup
+   bash
+   npm install
+   
+3. Bikin file `.env` isi seperti ini:
 
-1. Navigate to frontend directory:
-```bash
-cd frontend
-```
+   env
+   DB_HOST=localhost
+   DB_PORT=5432
+   DB_NAME=industrix_todo
+   DB_USER=postgres
+   DB_PASSWORD=your_password
+   PORT=3001
+   
+4. Jalanin server backend:
 
-2. Install dependencies:
-```bash
-npm install
-```
+   bash
+   npm run dev
+   
 
-3. Start the frontend development server:
-```bash
-npm run dev
-```
+   → Backend jalan di `http://localhost:3001`
 
-Frontend will run on: http://localhost:5173 (or another available port)
+Frontend
 
-## 🗄️ Database Schema
+1. Masuk ke folder frontend:
 
-### Categories Table
-- `id` (Primary Key)
-- `name` (Unique, Required)
-- `color` (Hex color code)
-- `description` (Optional)
-- `created_at`, `updated_at`
+   bash
+   cd frontend
+   
+2. Install dependency:
 
-### Todos Table
-- `id` (Primary Key)
-- `title` (Required)
-- `description` (Optional)
-- `completed` (Boolean, default: false)
-- `category_id` (Foreign Key to Categories)
-- `priority` (Enum: low, medium, high)
-- `due_date` (Optional)
-- `created_at`, `updated_at`
+   bash
+   npm install
+   
+3. Jalanin frontend:
 
-## 🔌 API Endpoints
+   bash
+   npm run dev
+   
 
-### Todos
-- `GET /api/todos` - Get all todos with pagination and filtering
-- `POST /api/todos` - Create new todo
-- `PUT /api/todos/:id` - Update todo
-- `DELETE /api/todos/:id` - Delete todo
-- `GET /api/todos/stats` - Get todo statistics
+   → Frontend jalan di `http://localhost:5173`
 
-### Categories
-- `GET /api/categories` - Get all categories
-- `POST /api/categories` - Create new category
-- `PUT /api/categories/:id` - Update category
-- `DELETE /api/categories/:id` - Delete category
+Struktur Database
 
-## 🧪 Testing
+tabel Categories
 
-Backend includes comprehensive API testing. Run tests with:
-```bash
+* id
+* name (unik, wajib)
+* color
+* description (optional)
+* created\_at, updated\_at
+
+Tabel Todos
+
+* id
+* title (wajib)
+* description (optional)
+* completed (boolean, default false)
+* category\_id (foreign key ke Categories)
+* priority (low, medium, high)
+* due\_date (optional)
+* created\_at, updated\_at
+
+API Utama
+
+Todos
+
+ GET /api/todos → ambil semua todo (support filter & pagination)
+ POST /api/todos → tambah todo baru
+ PUT /api/todos/:id → update todo
+ DELETE /api/todos/:id → hapus todo
+ GET /api/todos/stats → statistik todo
+
+Categories
+
+GET /api/categories
+POST /api/categories
+PUT /api/categories/:id
+DELETE /api/categories/:id
+
+Testing
+
+Backend ada beberapa unit test pake Jest + Supertest. Bisa dijalanin dengan:
+
+bash
 cd backend
 npm test
-```
 
-## 🚀 Deployment
 
-### Backend Deployment
-1. Set production environment variables
-2. Build the application: `npm run build`
-3. Start production server: `npm start`
+Catatan
 
-### Frontend Deployment
-1. Build for production: `npm run build`
-2. Deploy the `dist` folder to your hosting service
+ Di mode development, database otomatis sync.
+ Ada hot reload untuk frontend & backend.
+ Masih banyak hal yang bisa diperbaiki, terutama error handling sama struktur kode.
 
-## 🔧 Development Notes
 
-- Database automatically syncs and seeds initial data in development mode
-- CORS is configured for local development
-- Hot reload enabled for both frontend and backend
-- TypeScript strict mode enabled for better code quality
 
-## 📝 Recent Fixes
 
-- ✅ Resolved database synchronization conflicts
-- ✅ Fixed unique index duplication issues
-- ✅ Improved error handling and logging
-- ✅ Enhanced CORS configuration
-- ✅ Optimized validation middleware
 
-## 🤝 Contributing
+Status: Sudah jalan, tapi masih versi belajar (bisa dipakai, tapi belum se-perfect production)
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
 
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 👨‍💻 Author
-
-Created as part of Industrix coding challenge.
-
----
-
-**Status**: ✅ Fully functional and ready for production!
