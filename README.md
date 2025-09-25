@@ -146,3 +146,34 @@ Catatan
 Status: Sudah jalan, tapi masih versi belajar (bisa dipakai, tapi belum se-perfect production)
 
 
+
+Database & Technical Questions (Q&A)
+Database Design
+
+What database tables did you create and why?
+Tabel yang dibuat adalah categories untuk menyimpan kategori dan todos untuk menyimpan data todo dengan relasi ke kategori. Relasinya one-to-many agar lebih sederhana dan sesuai kebutuhan aplikasi todo.
+
+How did you handle pagination and filtering in the database?
+Pagination diatur menggunakan LIMIT dan OFFSET. Filtering dan sorting menggunakan WHERE serta ORDER BY. Index ditambahkan pada kolom completed, priority, dan category_id untuk mempercepat query.
+
+Technical Decisions
+
+How did you implement responsive design?
+Responsive design diterapkan dengan breakpoints bawaan Ant Design (xs–xl). Pada layar kecil digunakan Drawer, sedangkan pada layar besar digunakan Grid dan Layout.
+
+How did you structure your React components?
+Struktur komponen dibuat sederhana (TodoList, TodoForm, FilterDrawer, dan lain-lain). State dikelola dengan Context API, termasuk filter dan pagination.
+
+What backend architecture did you choose and why?
+Backend menggunakan Express dengan pola MVC (routes, controllers, models). Error handling ditangani melalui middleware global.
+
+How did you handle data validation?
+Data divalidasi di frontend menggunakan AntD Form untuk pengalaman pengguna, dan di backend menggunakan express-validator untuk keamanan.
+
+Testing & Quality
+
+What did you choose to unit test and why?
+Unit test dilakukan pada endpoint utama (todos, categories) menggunakan Jest dan Supertest. Edge case yang diuji meliputi input kosong, duplikat nama kategori, dan id yang tidak ditemukan.
+
+If you had more time, what would you improve or add?
+Perbaikan yang direncanakan mencakup penambahan authentication agar mendukung multi-user, Membuat Delete menjadi soft delete, pembuatan custom hooks di frontend, serta peningkatan UI dengan drag-and-drop dan dark mode.
